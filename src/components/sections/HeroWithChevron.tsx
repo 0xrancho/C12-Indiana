@@ -30,23 +30,9 @@ const HeroWithChevron = ({
       {/* Teal Background for Content Area (Right 60%) */}
       <div className="absolute right-0 top-0 bottom-0 w-full md:w-[60%] bg-primary z-0" />
 
-      {/* Double Chevron Divider: Teal and Gold */}
-      <svg
-        className="absolute top-0 bottom-0 hidden md:block z-10"
-        style={{ left: "35%", width: "20%" }}
-        viewBox="0 0 100 100"
-        preserveAspectRatio="none"
-        aria-hidden="true"
-      >
-        {/* Teal chevron stripe */}
-        <polygon points="0,0 25,0 45,50 25,100 0,100" fill="hsl(var(--primary))" />
-        {/* Gold chevron stripe */}
-        <polygon points="25,0 85,0 100,50 85,100 25,100" fill="hsl(var(--accent))" />
-      </svg>
-
       {/* Content Section (Right 60%) */}
-      <div className="container mx-auto px-6 relative z-20">
-        <div className="md:ml-[56%] md:pl-12 py-20">
+      <div className="container mx-auto px-6 relative z-10">
+        <div className="md:ml-[42%] md:pl-12 py-20">
           <div className="max-w-2xl text-primary-foreground">
             <h1 className="mb-6">{title}</h1>
             {subtitle && <p className="text-2xl md:text-3xl font-heading mb-6">{subtitle}</p>}
