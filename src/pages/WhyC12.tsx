@@ -97,15 +97,25 @@ const WhyC12 = () => {
                   "Your C12 Chair isn't just a facilitator—they're a seasoned business leader who understands your challenges and is committed to your success. Monthly one-on-one coaching ensures you stay on track.",
               },
             ].map((item, index) => (
-              <Card key={index} className="p-8">
-                <div className="w-16 h-16 mb-6 rounded-full bg-accent flex items-center justify-center">
-                  <span className="text-3xl font-heading font-bold text-accent-foreground">
-                    {item.number}
-                  </span>
-                </div>
-                <h3 className="text-2xl mb-4">{item.title}</h3>
-                <p>{item.description}</p>
-              </Card>
+              <Accordion key={index} type="single" collapsible>
+                <AccordionItem value={`item-${index}`} className="bg-secondary rounded-lg border-none">
+                  <AccordionTrigger className="px-8 py-6 hover:no-underline [&[data-state=open]>svg]:rotate-180">
+                    <div className="flex items-center gap-4 flex-1">
+                      <div className="w-16 h-16 rounded-full bg-accent flex items-center justify-center flex-shrink-0">
+                        <span className="text-3xl font-heading font-bold text-accent-foreground">
+                          {item.number}
+                        </span>
+                      </div>
+                      <h3 className="text-2xl text-accent text-left">{item.title}</h3>
+                    </div>
+                  </AccordionTrigger>
+                  <AccordionContent className="px-8 pb-6">
+                    <div className="bg-background rounded-lg p-6 text-secondary">
+                      <p>{item.description}</p>
+                    </div>
+                  </AccordionContent>
+                </AccordionItem>
+              </Accordion>
             ))}
           </div>
         </div>
