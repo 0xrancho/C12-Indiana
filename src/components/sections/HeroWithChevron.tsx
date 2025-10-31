@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import heroBanner from "@/assets/hero-banner3.png";
+import heroBanner from "@/assets/hero-banner-screencap.png";
 
 interface HeroWithChevronProps {
   backgroundImage?: string;
