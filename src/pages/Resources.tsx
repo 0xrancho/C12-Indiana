@@ -69,14 +69,12 @@ const Resources = () => {
         <div className="container mx-auto px-6">
           <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {resources.map((resource, index) => (
-              <Card key={index} className="overflow-hidden flex flex-col">
-                <div className="aspect-[4/3] overflow-hidden">
-                  <img 
-                    src={resource.image} 
-                    alt={resource.title}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
+              <Card key={index} className="overflow-hidden flex flex-col p-0">
+                <img 
+                  src={resource.image} 
+                  alt={resource.title}
+                  className="w-full aspect-[4/3] object-cover"
+                />
                 <div className="p-8 flex-1 flex flex-col">
                   <h3 className="text-2xl mb-4">{resource.title}</h3>
                   <p className="mb-6 flex-1">{resource.description}</p>
