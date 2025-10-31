@@ -101,6 +101,9 @@ const Resources = () => {
         </div>
       </section>
 
+      {/* Bottom Diagonal Separator - slopes up to the right */}
+      <div className="relative h-32 bg-background" style={{ clipPath: 'polygon(0 100%, 100% 0, 100% 100%)' }} />
+
       {/* CTA Section */}
       <section className="bg-background py-20">
         <div className="container mx-auto px-6 max-w-4xl">
