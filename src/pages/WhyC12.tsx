@@ -112,8 +112,12 @@ const WhyC12 = () => {
       </section>
 
       {/* Impact and Benefits */}
-      <section className="py-20 bg-secondary">
-        <div className="container mx-auto px-6">
+      <div className="relative">
+        {/* Top slope divider */}
+        <div className="absolute top-0 left-0 right-0 h-16 bg-background" style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 0)" }} />
+        
+        <section className="py-20 bg-secondary relative" style={{ marginTop: "-1px" }}>
+          <div className="container mx-auto px-6">
           <h2 className="text-center mb-16 text-white">Impact and Benefits</h2>
           <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto items-start">
             <div>
@@ -169,12 +173,18 @@ const WhyC12 = () => {
               <img 
                 src={c12Discussion} 
                 alt="C12 forum discussion" 
-                className="w-full rounded-lg shadow-lg"
+                className="w-full rounded-lg"
               />
             </div>
           </div>
         </div>
       </section>
+      
+      {/* Bottom slope divider */}
+      <div className="relative h-16 bg-background" style={{ marginTop: "-1px" }}>
+        <div className="absolute top-0 left-0 right-0 h-full bg-secondary" style={{ clipPath: "polygon(0 0, 100% 100%, 0 100%)" }} />
+      </div>
+    </div>
 
       {/* Is C12 Right for You? */}
       <section className="py-20 bg-background">
