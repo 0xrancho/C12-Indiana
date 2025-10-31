@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/select";
 import HeroWithChevron from "@/components/sections/HeroWithChevron";
 import { useToast } from "@/hooks/use-toast";
+import indyMap from "@/assets/indy-map.png";
 
 const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -36,20 +37,31 @@ const Contact = () => {
     <div className="min-h-screen">
       {/* Hero */}
       <HeroWithChevron
-        title="Contact Us"
+        title="Get In Touch"
         subtitle="Let's embark on this journey together!"
       />
 
       {/* Form Section */}
       <section className="py-20 bg-muted">
         <div className="container mx-auto px-6">
-          <div className="max-w-2xl mx-auto">
+          <div className="max-w-6xl mx-auto">
             <p className="text-center text-xl mb-12">
               Every great partnership starts with a conversation. Tell us a little about yourself, and we'll
               connect you with a Chair to explore how C12 can serve you.
             </p>
 
-            <form onSubmit={handleSubmit} className="space-y-6 bg-card p-8 rounded-lg shadow-lg">
+            <div className="grid md:grid-cols-2 gap-8 items-start">
+              {/* Map Image */}
+              <div className="hidden md:block">
+                <img 
+                  src={indyMap} 
+                  alt="C12 Indiana service area map" 
+                  className="w-full h-full object-cover rounded-lg shadow-lg"
+                />
+              </div>
+
+              {/* Form */}
+              <form onSubmit={handleSubmit} className="space-y-6 bg-card p-8 rounded-lg shadow-lg">
               <div className="grid grid-cols-2 gap-4">
                 <div>
                   <Label htmlFor="firstName">First Name *</Label>
@@ -116,7 +128,8 @@ const Contact = () => {
               <Button type="submit" size="xl" className="w-full" disabled={isSubmitting}>
                 {isSubmitting ? "Sending..." : "Send Message"}
               </Button>
-            </form>
+              </form>
+            </div>
           </div>
         </div>
       </section>
