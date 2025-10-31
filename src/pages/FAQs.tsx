@@ -7,6 +7,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import HeroWithChevron from "@/components/sections/HeroWithChevron";
+import prayerGroupImage from "@/assets/c12-prayer-group.jpeg";
 
 const FAQs = () => {
   const faqSections = [
@@ -177,33 +178,76 @@ const FAQs = () => {
         subtitle="Clarity builds confidence."
       />
 
-      {/* FAQ Sections */}
-      <section className="py-20 bg-muted">
-        <div className="container mx-auto px-6">
-          <div className="max-w-4xl mx-auto space-y-12">
-            {faqSections.map((section, sectionIndex) => (
-              <div key={sectionIndex}>
-                <h2 className="mb-8">{section.title}</h2>
-                <Accordion type="single" collapsible className="space-y-4">
-                  {section.questions.map((item, questionIndex) => (
-                    <AccordionItem
-                      key={questionIndex}
-                      value={`${sectionIndex}-${questionIndex}`}
-                      className="bg-card rounded-lg px-6 border-none"
-                    >
-                      <AccordionTrigger className="text-left hover:no-underline py-6">
-                        <span className="font-heading text-xl">{item.q}</span>
-                      </AccordionTrigger>
-                      <AccordionContent className="text-lg pb-6">{item.a}</AccordionContent>
-                    </AccordionItem>
-                  ))}
-                </Accordion>
-              </div>
-            ))}
-          </div>
+      {/* FAQ Sections with Alternating Backgrounds */}
+      {faqSections.map((section, sectionIndex) => {
+        const isEven = sectionIndex % 2 === 0;
+        const showBenefitsBackground = section.title === "Benefits";
 
-          {/* Bottom CTA */}
-          <div className="max-w-4xl mx-auto text-center mt-16">
+        return (
+          <div key={sectionIndex}>
+            {/* FAQ Section */}
+            <section
+              className={`py-20 relative ${
+                isEven ? "bg-background" : "bg-accent"
+              }`}
+            >
+              {/* Background image for Benefits section */}
+              {showBenefitsBackground && (
+                <div className="absolute inset-0 opacity-10">
+                  <img
+                    src={prayerGroupImage}
+                    alt=""
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              )}
+              
+              <div className="container mx-auto px-6 relative z-10">
+                <div className="max-w-4xl mx-auto">
+                  <h2 className="mb-8 text-primary">{section.title}</h2>
+                  <Accordion type="single" collapsible className="space-y-4">
+                    {section.questions.map((item, questionIndex) => (
+                      <AccordionItem
+                        key={questionIndex}
+                        value={`${sectionIndex}-${questionIndex}`}
+                        className="bg-card rounded-lg px-6 border-none shadow-sm hover:shadow-md transition-shadow"
+                      >
+                        <AccordionTrigger className="text-left hover:no-underline py-6 group">
+                          <span className="font-heading text-xl group-hover:text-primary transition-colors">
+                            {item.q}
+                          </span>
+                        </AccordionTrigger>
+                        <AccordionContent className="text-lg pb-6 text-muted-foreground">
+                          {item.a}
+                        </AccordionContent>
+                      </AccordionItem>
+                    ))}
+                  </Accordion>
+                </div>
+              </div>
+            </section>
+
+            {/* Diagonal Separator (except after last section) */}
+            {sectionIndex < faqSections.length - 1 && (
+              <div className="relative h-16">
+                <div
+                  className={`absolute inset-0 ${
+                    isEven ? "bg-accent" : "bg-background"
+                  }`}
+                  style={{
+                    clipPath: "polygon(0 0, 100% 0, 50% 100%)",
+                  }}
+                />
+              </div>
+            )}
+          </div>
+        );
+      })}
+
+      {/* Bottom CTA */}
+      <section className="bg-background py-20">
+        <div className="container mx-auto px-6">
+          <div className="max-w-4xl mx-auto text-center">
             <h3 className="mb-6">Ready to learn more?</h3>
             <Link to="/contact">
               <Button size="xl">Contact Us</Button>
