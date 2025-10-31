@@ -112,11 +112,12 @@ const WhyC12 = () => {
       </section>
 
       {/* Impact and Benefits */}
-      <div className="relative">
-        {/* Top slope divider */}
-        <div className="absolute top-0 left-0 right-0 h-16 bg-background" style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 0)" }} />
+      <section className="py-20 bg-secondary relative">
+        {/* Top slope triangle - white overlapping */}
+        <div className="absolute top-0 left-0 right-0 h-20 bg-background pointer-events-none" style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 0)" }} />
         
-        <section className="py-20 bg-secondary relative" style={{ marginTop: "-1px" }}>
+        {/* Bottom slope triangle - white overlapping */}
+        <div className="absolute bottom-0 left-0 right-0 h-20 bg-background pointer-events-none" style={{ clipPath: "polygon(0 0, 100% 100%, 0 100%)" }} />
           <div className="container mx-auto px-6">
           <h2 className="text-center mb-16 text-white">Impact and Benefits</h2>
           <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto items-start">
@@ -179,12 +180,6 @@ const WhyC12 = () => {
           </div>
         </div>
       </section>
-      
-      {/* Bottom slope divider */}
-      <div className="relative h-16 bg-background" style={{ marginTop: "-1px" }}>
-        <div className="absolute top-0 left-0 right-0 h-full bg-secondary" style={{ clipPath: "polygon(0 0, 100% 100%, 0 100%)" }} />
-      </div>
-    </div>
 
       {/* Is C12 Right for You? */}
       <section className="py-20 bg-background">
