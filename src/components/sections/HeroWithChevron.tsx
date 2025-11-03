@@ -24,32 +24,13 @@ const HeroWithChevron = ({
     <section className={`relative overflow-visible ${className}`}>
       {/* Mobile Layout - stacked vertically */}
       <div className="md:hidden">
-        {/* Image section with chevron overlay */}
+        {/* Image section */}
         <div className="relative w-full min-h-[400px]">
           <img
             src={bgImage}
             alt=""
             className="w-full h-full object-cover"
           />
-          {/* Chevron overlay on mobile */}
-          <div className="absolute top-0 right-0 w-1/2 h-full flex items-center justify-end">
-            <svg
-              viewBox="0 0 100 100"
-              preserveAspectRatio="none"
-              className="w-full h-full"
-            >
-              <path
-                d="M 0,0 L 100,50 L 0,100 Z"
-                fill="hsl(var(--primary))"
-                opacity="0.9"
-              />
-              <path
-                d="M 15,0 L 100,50 L 15,100 Z"
-                fill="hsl(var(--accent))"
-                opacity="0.9"
-              />
-            </svg>
-          </div>
         </div>
 
         {/* Text content section - below image on teal background */}
