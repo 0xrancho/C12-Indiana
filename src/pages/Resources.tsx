@@ -76,7 +76,7 @@ const Resources = () => {
       <section className="relative bg-accent pt-16 pb-40">
         <div className="container mx-auto px-6 max-w-6xl space-y-12 relative z-10">
           {resources.map((resource, index) => (
-            <Card key={index} className="bg-primary text-primary-foreground border-0 rounded-xl overflow-hidden">
+            <Card key={index} className="bg-primary text-primary-foreground border-0 rounded-xl overflow-hidden shadow-2xl">
               <div className="grid md:grid-cols-2 gap-0 items-center">
                 <div className="p-12 order-2 md:order-1">
                   <h3 className="mb-6">{resource.title}</h3>
@@ -114,7 +114,7 @@ const Resources = () => {
               alt="C12 prayer group" 
               className="absolute inset-0 w-full h-full object-cover"
             />
-            <Card className="relative bg-primary/90 text-primary-foreground border-0 p-12 text-center">
+            <Card className="relative bg-primary/90 text-primary-foreground border-0 p-12 text-center shadow-2xl">
             <h2 className="mb-6">Ready to Transform Your Business?</h2>
             <p className="text-xl mb-8 leading-relaxed">
               Join a community of Christian business leaders committed to building businesses that honor God and serve others.

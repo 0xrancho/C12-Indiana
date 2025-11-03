@@ -58,7 +58,7 @@ const Home = () => {
           </p>
         }
       >
-        <Link to="/contact">
+        <Link to="/executive-briefing">
           <Button variant="outlined" size="xl">
             Request a Meeting
           </Button>

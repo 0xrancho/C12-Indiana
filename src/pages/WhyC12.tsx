@@ -2,10 +2,12 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import HeroWithChevron from "@/components/sections/HeroWithChevron";
-import { CheckCircle2 } from "lucide-react";
+import { CheckCircle2, Linkedin } from "lucide-react";
 import whyc12Banner from "@/assets/Whyc12-banner.png";
 import c12Logo from "@/assets/C12_7.png";
 import kellyHeadshot from "@/assets/kelly-principal.jpeg";
+import toddHeadshot from "@/assets/Todd-chair.jpeg";
+import stanHeadshot from "@/assets/Stan-chair.jpeg";
 import {
   Accordion,
   AccordionContent,
@@ -66,59 +68,88 @@ const WhyC12 = () => {
             lead with eternal perspective and tangible results.
           </p>
 
-          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {[
-              {
-                number: "1",
-                title: "Proven Business Excellence",
-                description:
-                  "We don't compromise on quality. C12's curriculum is world-class, covering strategy, operations, finance, leadership, and culture—grounded in proven frameworks that drive profitability and growth.",
-              },
-              {
-                number: "2",
-                title: "Peer Accountability with Kingdom Perspective",
-                description:
-                  "You'll be challenged by leaders who understand the tension between profit and purpose. Our forums create a space for honest conversation about business decisions, spiritual growth, and lasting impact.",
-              },
-              {
-                number: "3",
-                title: "Christ-Centered Foundation",
-                description:
-                  "Faith isn't an add-on—it's our foundation. Every meeting, every discussion, and every coaching session is rooted in biblical truth and designed to help you lead your business as an act of worship.",
-              },
-              {
-                number: "4",
-                title: "Transformation, Not Just Information",
-                description:
-                  "We don't just teach principles—we drive action. You'll leave every forum with clear next steps and the accountability to follow through. Real change happens here.",
-              },
-              {
-                number: "5",
-                title: "A Coach Who Walks With You",
-                description:
-                  "Your C12 Chair isn't just a facilitator—they're a seasoned business leader who understands your challenges and is committed to your success. Monthly one-on-one coaching ensures you stay on track.",
-              },
-            ].map((item, index) => (
-              <Accordion key={index} type="single" collapsible>
-                <AccordionItem value={`item-${index}`} className="bg-secondary rounded-lg border-none">
-                  <AccordionTrigger className="px-8 py-6 hover:no-underline [&[data-state=open]>svg]:rotate-180">
-                    <div className="flex items-center gap-4 flex-1">
-                      <div className="w-16 h-16 rounded-full bg-accent flex items-center justify-center flex-shrink-0">
-                        <span className="text-3xl font-heading font-bold text-accent-foreground">
-                          {item.number}
-                        </span>
+          <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+            {/* Left Column - Items 1 & 2 */}
+            <div className="space-y-8">
+              {[
+                {
+                  number: "1",
+                  title: "Proven Business Excellence",
+                  description:
+                    "We don't compromise on quality. C12's curriculum is world-class, covering strategy, operations, finance, leadership, and culture—grounded in proven frameworks that drive profitability and growth.",
+                },
+                {
+                  number: "2",
+                  title: "Peer Accountability with Kingdom Perspective",
+                  description:
+                    "You'll be challenged by leaders who understand the tension between profit and purpose. Our forums create a space for honest conversation about business decisions, spiritual growth, and lasting impact.",
+                },
+              ].map((item, index) => (
+                <Accordion key={index} type="single" collapsible>
+                  <AccordionItem value={`item-${index}`} className="bg-secondary rounded-lg border-none">
+                    <AccordionTrigger className="px-8 py-6 hover:no-underline [&[data-state=open]>svg]:rotate-180">
+                      <div className="flex items-center gap-4 flex-1">
+                        <div className="w-16 h-16 rounded-full bg-accent flex items-center justify-center flex-shrink-0">
+                          <span className="text-3xl font-heading font-bold text-accent-foreground">
+                            {item.number}
+                          </span>
+                        </div>
+                        <h3 className="text-2xl text-accent text-left">{item.title}</h3>
                       </div>
-                      <h3 className="text-2xl text-accent text-left">{item.title}</h3>
-                    </div>
-                  </AccordionTrigger>
-                  <AccordionContent className="px-2 pb-2">
-                    <div className="bg-background rounded-lg p-6 text-secondary">
-                      <p>{item.description}</p>
-                    </div>
-                  </AccordionContent>
-                </AccordionItem>
-              </Accordion>
-            ))}
+                    </AccordionTrigger>
+                    <AccordionContent className="px-2 pb-2">
+                      <div className="bg-background rounded-lg p-6 text-secondary">
+                        <p>{item.description}</p>
+                      </div>
+                    </AccordionContent>
+                  </AccordionItem>
+                </Accordion>
+              ))}
+            </div>
+
+            {/* Right Column - Items 3, 4 & 5 */}
+            <div className="space-y-8">
+              {[
+                {
+                  number: "3",
+                  title: "Christ-Centered Foundation",
+                  description:
+                    "Faith isn't an add-on—it's our foundation. Every meeting, every discussion, and every coaching session is rooted in biblical truth and designed to help you lead your business as an act of worship.",
+                },
+                {
+                  number: "4",
+                  title: "Transformation, Not Just Information",
+                  description:
+                    "We don't just teach principles—we drive action. You'll leave every forum with clear next steps and the accountability to follow through. Real change happens here.",
+                },
+                {
+                  number: "5",
+                  title: "A Coach Who Walks With You",
+                  description:
+                    "Your C12 Chair isn't just a facilitator—they're a seasoned business leader who understands your challenges and is committed to your success. Monthly one-on-one coaching ensures you stay on track.",
+                },
+              ].map((item, index) => (
+                <Accordion key={index} type="single" collapsible>
+                  <AccordionItem value={`item-${index}`} className="bg-secondary rounded-lg border-none">
+                    <AccordionTrigger className="px-8 py-6 hover:no-underline [&[data-state=open]>svg]:rotate-180">
+                      <div className="flex items-center gap-4 flex-1">
+                        <div className="w-16 h-16 rounded-full bg-accent flex items-center justify-center flex-shrink-0">
+                          <span className="text-3xl font-heading font-bold text-accent-foreground">
+                            {item.number}
+                          </span>
+                        </div>
+                        <h3 className="text-2xl text-accent text-left">{item.title}</h3>
+                      </div>
+                    </AccordionTrigger>
+                    <AccordionContent className="px-2 pb-2">
+                      <div className="bg-background rounded-lg p-6 text-secondary">
+                        <p>{item.description}</p>
+                      </div>
+                    </AccordionContent>
+                  </AccordionItem>
+                </Accordion>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -227,7 +258,8 @@ const WhyC12 = () => {
             CEOs thrive:
           </p>
 
-          <div className="max-w-2xl mx-auto text-center">
+          <div className="grid md:grid-cols-3 gap-12 max-w-6xl mx-auto mb-12">
+            {/* Kelly */}
             <div className="flex flex-col items-center">
               {/* Circular headshot with thin yellow border */}
               <div className="w-48 h-48 rounded-full p-0.5 bg-accent mb-6">
@@ -240,13 +272,77 @@ const WhyC12 = () => {
 
               {/* Name and title */}
               <h3 className="text-3xl mb-2">Kelly Schwedland</h3>
-              <p className="text-xl text-muted-foreground mb-8">Principal Chair</p>
-
-              {/* Connect button */}
-              <Link to="/contact">
-                <Button size="xl">Connect with the Principal Chair</Button>
-              </Link>
+              <div className="flex items-center gap-2">
+                <p className="text-xl text-muted-foreground">Chair</p>
+                <a
+                  href="https://www.linkedin.com/in/kellyschwedland/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  <Linkedin size={20} />
+                </a>
+              </div>
             </div>
+
+            {/* Todd */}
+            <div className="flex flex-col items-center">
+              {/* Circular headshot with thin yellow border */}
+              <div className="w-48 h-48 rounded-full p-0.5 bg-accent mb-6">
+                <img
+                  src={toddHeadshot}
+                  alt="Todd DeKruyter"
+                  className="w-full h-full rounded-full object-cover"
+                />
+              </div>
+
+              {/* Name and title */}
+              <h3 className="text-3xl mb-2">Todd DeKruyter</h3>
+              <div className="flex items-center gap-2">
+                <p className="text-xl text-muted-foreground">Chair</p>
+                <a
+                  href="https://www.linkedin.com/in/todd-dekruyter/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  <Linkedin size={20} />
+                </a>
+              </div>
+            </div>
+
+            {/* Stan */}
+            <div className="flex flex-col items-center">
+              {/* Circular headshot with thin yellow border */}
+              <div className="w-48 h-48 rounded-full p-0.5 bg-accent mb-6">
+                <img
+                  src={stanHeadshot}
+                  alt="Stan Griswold Jr"
+                  className="w-full h-full rounded-full object-cover"
+                />
+              </div>
+
+              {/* Name and title */}
+              <h3 className="text-3xl mb-2">Stan Griswold Jr</h3>
+              <div className="flex items-center gap-2">
+                <p className="text-xl text-muted-foreground">Chair</p>
+                <a
+                  href="https://www.linkedin.com/in/stangriswoldjr/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  <Linkedin size={20} />
+                </a>
+              </div>
+            </div>
+          </div>
+
+          {/* Single centered connect button */}
+          <div className="flex justify-center">
+            <Link to="/contact">
+              <Button size="xl">Connect with our Chairs today</Button>
+            </Link>
           </div>
         </div>
       </section>

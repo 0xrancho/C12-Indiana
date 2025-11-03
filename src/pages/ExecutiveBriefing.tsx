@@ -13,6 +13,14 @@ import {
 import HeroWithChevron from "@/components/sections/HeroWithChevron";
 import { useToast } from "@/hooks/use-toast";
 import { CheckCircle2 } from "lucide-react";
+import outcome96 from "@/assets/96-outcome.png";
+import outcome78 from "@/assets/78-outcome.png";
+import outcome73 from "@/assets/73-outcome.png";
+import metric4000 from "@/assets/metric-4000.png";
+import metric175 from "@/assets/metric-175.png";
+import metric5 from "@/assets/metric-5.png";
+import metric1 from "@/assets/metric-1.png";
+import c12Discussion from "@/assets/c12-forums-discussion.png";
 
 const ExecutiveBriefing = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -44,25 +52,22 @@ const ExecutiveBriefing = () => {
       {/* Stats Block */}
       <section className="py-20 bg-background">
         <div className="container mx-auto px-6">
-          <div className="max-w-4xl mx-auto text-center">
+          <div className="max-w-6xl mx-auto text-center">
             <h2 className="mb-4">It Is Lonely At The Top</h2>
             <p className="text-3xl font-heading mb-6">But, it doesn't have to be…</p>
             <p className="text-xl mb-12">
               C12 Business Forums is an invitation-only peer group for Christian CEOs.
             </p>
 
-            <div className="grid md:grid-cols-3 gap-8">
+            <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
               <div>
-                <div className="text-6xl font-heading font-bold text-accent mb-4">95%</div>
-                <p className="text-lg">of CEOs report better understanding their purpose as a leader</p>
+                <img src={outcome96} alt="96% outcome" className="w-full h-auto" />
               </div>
               <div>
-                <div className="text-6xl font-heading font-bold text-accent mb-4">78%</div>
-                <p className="text-lg">report improvement in their marriage as a result of being in C12</p>
+                <img src={outcome78} alt="78% outcome" className="w-full h-auto" />
               </div>
               <div>
-                <div className="text-6xl font-heading font-bold text-accent mb-4">73%</div>
-                <p className="text-lg">of CEOs report increased profitability due to their C12 experience</p>
+                <img src={outcome73} alt="73% outcome" className="w-full h-auto" />
               </div>
             </div>
           </div>
@@ -72,31 +77,36 @@ const ExecutiveBriefing = () => {
       {/* By The Numbers */}
       <section className="py-20 bg-muted">
         <div className="container mx-auto px-6">
-          <div className="max-w-5xl mx-auto">
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {[
-                { number: "4,000+", label: "Christian CEOs and Business Leaders" },
-                { number: "175+", label: "CITIES" },
-                { number: "5", label: "CONTINENTS" },
-                { number: "1", label: "MISSION" },
-              ].map((stat, index) => (
-                <Card key={index} className="p-8 text-center">
-                  <div className="text-5xl font-heading font-bold text-accent mb-4">
-                    {stat.number}
-                  </div>
-                  <p className="text-lg font-heading">{stat.label}</p>
-                </Card>
-              ))}
+          <div className="max-w-6xl mx-auto">
+            <div className="grid md:grid-cols-2 gap-12 items-center">
+              {/* Left: Stacked metrics - right aligned */}
+              <div className="space-y-6 flex flex-col items-end">
+                <img src={metric4000} alt="4000+ Christian CEOs and Business Leaders" className="border-2 border-accent shadow-lg rounded" />
+                <img src={metric175} alt="175+ Cities" className="border-2 border-accent shadow-lg rounded" />
+                <img src={metric5} alt="5 Continents" className="border-2 border-accent shadow-lg rounded" />
+                <img src={metric1} alt="1 Mission" className="border-2 border-accent shadow-lg rounded" />
+              </div>
+
+              {/* Right: Forum discussion image */}
+              <div className="hidden md:block">
+                <img src={c12Discussion} alt="C12 forum discussion" className="w-full h-auto rounded-lg" />
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Membership Includes */}
-      <section className="py-20 bg-background">
+      <section className="py-20 bg-accent relative">
+        {/* Top slope triangle - muted gray overlapping */}
+        <div className="absolute top-0 left-0 right-0 h-20 bg-muted pointer-events-none" style={{ clipPath: "polygon(0 0, 100% 0, 0 100%)" }} />
+
+        {/* Bottom slope triangle - muted gray overlapping */}
+        <div className="absolute bottom-0 left-0 right-0 h-20 bg-muted pointer-events-none" style={{ clipPath: "polygon(100% 0, 100% 100%, 0 100%)" }} />
+
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-center mb-12">C12 Membership Includes:</h2>
+            <h2 className="text-center mb-12 text-primary">C12 Membership Includes:</h2>
             <div className="space-y-6">
               {[
                 "One-on-One Coaching",
@@ -106,8 +116,10 @@ const ExecutiveBriefing = () => {
                 "Annual 360-Degree Business Evaluations",
               ].map((item, index) => (
                 <div key={index} className="flex items-center gap-4">
-                  <CheckCircle2 className="text-accent flex-shrink-0" size={28} />
-                  <p className="text-xl">{item}</p>
+                  <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center flex-shrink-0">
+                    <CheckCircle2 className="text-white" size={20} />
+                  </div>
+                  <p className="text-xl text-primary">{item}</p>
                 </div>
               ))}
             </div>
