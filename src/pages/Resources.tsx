@@ -70,10 +70,10 @@ const Resources = () => {
       </section>
 
       {/* Diagonal Separator - slopes up to the right */}
-      <div className="relative h-32 bg-accent bg-grid-overlay" style={{ clipPath: 'polygon(0 100%, 100% 0, 100% 100%)' }} />
+      <div className="relative h-32 bg-accent bg-grid-overlay-dark" style={{ clipPath: 'polygon(0 100%, 100% 0, 100% 100%)' }} />
 
       {/* Resources Section */}
-      <section className="relative bg-accent bg-grid-overlay pt-16 pb-40">
+      <section className="relative bg-accent bg-grid-overlay-dark pt-16 pb-40">
         <div className="container mx-auto px-6 max-w-6xl space-y-12 relative z-10">
           {resources.map((resource, index) => (
             <Card key={index} className="bg-primary text-primary-foreground border-0 rounded-xl overflow-hidden shadow-2xl">

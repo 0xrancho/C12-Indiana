@@ -97,7 +97,7 @@ const ExecutiveBriefing = () => {
       </section>
 
       {/* Membership Includes */}
-      <section className="py-20 bg-accent bg-grid-overlay relative">
+      <section className="py-20 bg-accent bg-grid-overlay-dark relative">
         {/* Top slope triangle - muted gray overlapping */}
         <div className="absolute top-0 left-0 right-0 h-20 bg-muted pointer-events-none" style={{ clipPath: "polygon(0 0, 100% 0, 0 100%)" }} />
 

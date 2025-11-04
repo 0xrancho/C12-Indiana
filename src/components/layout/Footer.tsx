@@ -7,7 +7,7 @@ const Footer = () => {
   return (
     <footer>
       {/* Bottom Bar */}
-      <div className="bg-primary bg-grid-overlay text-primary-foreground py-6">
+      <div className="bg-primary text-primary-foreground py-6">
         <div className="container mx-auto px-6">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <p className="text-sm opacity-75">

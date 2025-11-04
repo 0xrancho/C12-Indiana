@@ -20,10 +20,10 @@ const Layout = ({ children }: LayoutProps) => {
       <Navigation />
       <main className="flex-1 pt-20 overflow-x-hidden">{children}</main>
       <Footer />
-      <div className="h-24 md:h-20 bg-primary bg-grid-overlay"></div>
+      <div className="h-24 md:h-20 bg-primary"></div>
 
       {/* Stationary Footer - Fixed at bottom */}
-      <div className="fixed bottom-0 left-0 right-0 bg-primary bg-grid-overlay text-primary-foreground py-4 px-6 shadow-lg z-40">
+      <div className="fixed bottom-0 left-0 right-0 bg-primary text-primary-foreground py-4 px-6 shadow-lg z-40">
         <div className="container mx-auto">
           <p className="text-center text-base md:text-lg">
             Schedule a discovery call with the Chair and learn more about our next C12 Executive Briefing.

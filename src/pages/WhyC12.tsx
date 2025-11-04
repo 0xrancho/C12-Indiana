@@ -155,7 +155,7 @@ const WhyC12 = () => {
       </section>
 
       {/* Impact and Benefits */}
-      <section className="py-20 bg-secondary bg-grid-overlay relative">
+      <section className="py-20 bg-secondary bg-grid-overlay-dark relative">
         {/* Top slope triangle - white overlapping */}
         <div className="absolute top-0 left-0 right-0 h-20 bg-background pointer-events-none" style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 0)" }} />
         
@@ -225,7 +225,7 @@ const WhyC12 = () => {
       </section>
 
       {/* Is C12 Right for You? */}
-      <section className="py-20 bg-background">
+      <section className="py-20 bg-background relative">
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-center mb-8">Is C12 Right for You?</h2>
@@ -247,12 +247,20 @@ const WhyC12 = () => {
             </div>
           </div>
         </div>
+
+        {/* White Triangle hanging off bottom - overlaps into next section */}
+        <div className="absolute left-1/2 bottom-0 -translate-x-1/2 translate-y-[38px] z-20">
+          <div
+            className="w-0 h-0 border-l-[60px] border-l-transparent border-r-[60px] border-r-transparent border-t-[40px] border-t-background"
+          />
+        </div>
       </section>
 
       {/* Meet Our Executive Leadership */}
       <section className="py-20 bg-muted">
         <div className="container mx-auto px-6">
           <h2 className="text-center mb-8">Meet Our Executive Leadership</h2>
+          <br />
           <p className="text-center text-xl mb-16 max-w-4xl mx-auto">
             C12 Indy–Fort Wayne is led by a team of marketplace veterans passionate about helping Christian
             CEOs thrive:

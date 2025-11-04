@@ -121,8 +121,16 @@ All colors MUST be HSL.
     @apply text-[21px] leading-relaxed;
   }
 
-  /* Grid overlay for teal and yellow backgrounds */
+  /* Grid overlay for dark backgrounds (teal/blue) */
   .bg-grid-overlay {
+    background-image:
+      linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  /* Grid overlay for light backgrounds (yellow/grey) */
+  .bg-grid-overlay-dark {
     background-image:
       linear-gradient(to right, rgba(0, 0, 0, 0.08) 1px, transparent 1px),
       linear-gradient(to bottom, rgba(0, 0, 0, 0.08) 1px, transparent 1px);

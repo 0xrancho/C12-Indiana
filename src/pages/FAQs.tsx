@@ -192,7 +192,7 @@ const FAQs = () => {
             {/* FAQ Section */}
             <section
               className={`py-20 relative ${sectionIndex === 0 ? 'md:pt-20 pt-0' : ''} ${
-                isEven ? "bg-background" : "bg-accent bg-grid-overlay"
+                isEven ? "bg-background" : "bg-accent bg-grid-overlay-dark"
               }`}
             >
               {/* Background images */}
@@ -245,12 +245,21 @@ const FAQs = () => {
               <div className="relative h-24 overflow-hidden">
                 <div
                   className={`absolute inset-0 ${
-                    isEven ? "bg-accent" : "bg-background"
+                    sectionIndex === 0
+                      ? "bg-grid-overlay-dark"  // Triangle over Benefits - custom color with grid
+                      : sectionIndex === 2
+                        ? "bg-grid-overlay-dark"  // Triangle over Key Players - custom color with grid
+                        : isEven ? "bg-accent" : "bg-background"
                   }`}
                   style={{
+                    backgroundColor: sectionIndex === 0
+                      ? "#CEAB74"  // Match Benefits section appearance
+                      : sectionIndex === 2
+                        ? "#D2AE75"  // Match Key Players section appearance
+                        : undefined,
                     clipPath: sectionIndex === 3
                       ? "polygon(0 0, 100% 0, 100% 100%)"  // Key Players: slope up-right
-                      : sectionIndex % 2 === 0 
+                      : sectionIndex % 2 === 0
                         ? "polygon(0 0, 100% 100%, 0 100%)"  // Slope down-right
                         : "polygon(0 100%, 100% 0, 100% 100%)", // Slope down-left
                   }}
