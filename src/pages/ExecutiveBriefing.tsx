@@ -30,15 +30,46 @@ const ExecutiveBriefing = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    try {
+      const formData = new FormData(e.currentTarget);
+      const data = {
+        firstName: formData.get('firstName'),
+        lastName: formData.get('lastName'),
+        email: formData.get('email'),
+        phone: formData.get('phone'),
+        organization: formData.get('organization'),
+        industry: formData.get('orgSize'), // Using orgSize field as industry placeholder
+        experience: formData.get('experience'),
+      };
 
-    toast({
-      title: "Request Received!",
-      description: "We'll contact you shortly about the next Executive Briefing.",
-    });
+      const response = await fetch('/api/submit-form', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
 
-    setIsSubmitting(false);
-    (e.target as HTMLFormElement).reset();
+      if (!response.ok) {
+        throw new Error('Submission failed');
+      }
+
+      toast({
+        title: "Request Received!",
+        description: "We'll contact you shortly about the next Executive Briefing.",
+      });
+
+      (e.target as HTMLFormElement).reset();
+    } catch (error) {
+      console.error('Form submission error:', error);
+      toast({
+        title: "Submission failed",
+        description: "Please try again or contact us directly.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -140,32 +171,32 @@ const ExecutiveBriefing = () => {
               <div className="grid grid-cols-2 gap-4">
                 <div>
                   <Label htmlFor="firstName">First Name *</Label>
-                  <Input id="firstName" required />
+                  <Input id="firstName" name="firstName" required />
                 </div>
                 <div>
                   <Label htmlFor="lastName">Last Name *</Label>
-                  <Input id="lastName" required />
+                  <Input id="lastName" name="lastName" required />
                 </div>
               </div>
 
               <div>
                 <Label htmlFor="email">Email *</Label>
-                <Input id="email" type="email" required />
+                <Input id="email" name="email" type="email" required />
               </div>
 
               <div>
                 <Label htmlFor="phone">Phone *</Label>
-                <Input id="phone" type="tel" required />
+                <Input id="phone" name="phone" type="tel" required />
               </div>
 
               <div>
                 <Label htmlFor="organization">Organization *</Label>
-                <Input id="organization" required />
+                <Input id="organization" name="organization" required />
               </div>
 
               <div>
                 <Label htmlFor="orgSize">How many people are in your organization? *</Label>
-                <Select required>
+                <Select name="orgSize" required>
                   <SelectTrigger id="orgSize">
                     <SelectValue placeholder="Select size" />
                   </SelectTrigger>
@@ -186,7 +217,7 @@ const ExecutiveBriefing = () => {
                   How many years have you been stewarding the business as
                   Owner/Founder/CEO/President/General Manager? *
                 </Label>
-                <Select required>
+                <Select name="experience" required>
                   <SelectTrigger id="experience">
                     <SelectValue placeholder="Select experience" />
                   </SelectTrigger>

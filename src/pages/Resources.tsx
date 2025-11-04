@@ -27,13 +27,47 @@ const Resources = () => {
     setIsModalOpen(true);
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setIsModalOpen(false);
-    toast({
-      title: "Thank you!",
-      description: "Your download will begin shortly.",
-    });
+
+    try {
+      const formData = new FormData(e.currentTarget);
+      const data = {
+        firstName: formData.get('firstName'),
+        lastName: formData.get('lastName'),
+        email: formData.get('email'),
+        phone: formData.get('phone'),
+        organization: formData.get('organization'),
+        resourceDownloaded: selectedResource,
+      };
+
+      const response = await fetch('/api/submit-form', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (!response.ok) {
+        throw new Error('Submission failed');
+      }
+
+      setIsModalOpen(false);
+      toast({
+        title: "Thank you!",
+        description: "Your download will begin shortly.",
+      });
+
+      (e.target as HTMLFormElement).reset();
+    } catch (error) {
+      console.error('Form submission error:', error);
+      toast({
+        title: "Submission failed",
+        description: "Please try again or contact us directly.",
+        variant: "destructive",
+      });
+    }
   };
 
   const resources = [
@@ -146,24 +180,24 @@ const Resources = () => {
             <div className="grid grid-cols-2 gap-4">
               <div>
                 <Label htmlFor="firstName">First Name *</Label>
-                <Input id="firstName" required />
+                <Input id="firstName" name="firstName" required />
               </div>
               <div>
                 <Label htmlFor="lastName">Last Name *</Label>
-                <Input id="lastName" required />
+                <Input id="lastName" name="lastName" required />
               </div>
             </div>
             <div>
               <Label htmlFor="email">Email *</Label>
-              <Input id="email" type="email" required />
+              <Input id="email" name="email" type="email" required />
             </div>
             <div>
               <Label htmlFor="organization">Organization (optional)</Label>
-              <Input id="organization" />
+              <Input id="organization" name="organization" />
             </div>
             <div>
               <Label htmlFor="phone">Phone (optional)</Label>
-              <Input id="phone" type="tel" />
+              <Input id="phone" name="phone" type="tel" />
             </div>
             <Button type="submit" className="w-full" size="lg">
               Download Now
