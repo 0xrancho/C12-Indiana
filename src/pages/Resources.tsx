@@ -56,7 +56,7 @@ const Resources = () => {
       setIsModalOpen(false);
       toast({
         title: "Thank you!",
-        description: "Your download will begin shortly.",
+        description: "Your download will be sent to the email provided.",
       });
 
       (e.target as HTMLFormElement).reset();
