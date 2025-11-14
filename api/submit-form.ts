@@ -95,6 +95,11 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
             name: source || 'Unknown',
           },
         },
+        'Group': {
+          select: {
+            name: 'Indianapolis',
+          },
+        },
         'Date Submitted': {
           date: {
             start: new Date().toISOString(),
