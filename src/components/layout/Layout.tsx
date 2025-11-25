@@ -27,10 +27,25 @@ const Layout = ({ children }: LayoutProps) => {
         <div className="container mx-auto">
           <p className="text-center text-base md:text-lg">
             Schedule a discovery call with the Chair and learn more about our next C12 Executive Briefing.
-            <Link to="/executive-briefing" className="inline ml-2">
-              <span className="font-bold underline decoration-accent decoration-2">Contact</span>
-              <ChevronRight className="inline-block text-accent ml-1" size={20} />
-            </Link>
+            {location.pathname === "/executive-briefing" ? (
+              <button
+                onClick={() => {
+                  const form = document.getElementById('briefing-form');
+                  if (form) {
+                    form.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                  }
+                }}
+                className="inline ml-2 bg-transparent border-none cursor-pointer"
+              >
+                <span className="font-bold underline decoration-accent decoration-2">Contact</span>
+                <ChevronRight className="inline-block text-accent ml-1" size={20} />
+              </button>
+            ) : (
+              <Link to="/executive-briefing" className="inline ml-2">
+                <span className="font-bold underline decoration-accent decoration-2">Contact</span>
+                <ChevronRight className="inline-block text-accent ml-1" size={20} />
+              </Link>
+            )}
           </p>
         </div>
       </div>

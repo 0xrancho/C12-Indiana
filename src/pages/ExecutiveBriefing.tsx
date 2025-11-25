@@ -90,6 +90,22 @@ const ExecutiveBriefing = () => {
           <div className="max-w-6xl mx-auto text-center">
             <h2 className="mb-4">It Is Lonely At The Top</h2>
             <p className="text-3xl font-heading mb-6">But, it doesn't have to be…</p>
+
+            {/* Video */}
+            <div className="max-w-4xl mx-auto mb-12">
+              <div style={{ padding: '56.25% 0 0 0', position: 'relative' }}>
+                <iframe
+                  src="https://player.vimeo.com/video/1138598680?h=e33a62ec41&badge=0&autopause=0&player_id=0&app_id=58479"
+                  frameBorder="0"
+                  allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
+                  title="C12 | Beyond the Bottom Line | 60s"
+                />
+              </div>
+              <script src="https://player.vimeo.com/api/player.js"></script>
+            </div>
+
             <p className="text-xl mb-12">
               C12 Business Forums is an invitation-only peer group for Christian CEOs.
             </p>
@@ -150,7 +166,7 @@ const ExecutiveBriefing = () => {
                 "One-on-One Coaching",
                 "CEO and Key Player Forums",
                 "World-Class Curriculum and Resources",
-                "Global Conferences Industry Forums",
+                "*Access to the Global Conference",
                 "Annual 360-Degree Business Evaluations",
               ].map((item, index) => (
                 <div key={index} className="flex items-center gap-4">
@@ -174,7 +190,7 @@ const ExecutiveBriefing = () => {
               connect you with a Chair to see if you qualify to attend the next Executive Briefing.
             </p>
 
-            <form onSubmit={handleSubmit} className="space-y-6 bg-card p-8 rounded-lg shadow-lg">
+            <form id="briefing-form" onSubmit={handleSubmit} className="space-y-6 bg-card p-8 rounded-lg shadow-lg">
               <div className="grid grid-cols-2 gap-4">
                 <div>
                   <Label htmlFor="firstName">First Name *</Label>
