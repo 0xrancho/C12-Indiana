@@ -34,7 +34,7 @@ const Navigation = () => {
     >
       <div className="container mx-auto px-6">
         <div className="flex items-center justify-between h-24">
-          <Link to="/" className="flex-shrink-0 flex items-center gap-2 scale-[1.44] origin-left">
+          <Link to="/" className="flex-shrink-0 flex items-center gap-1.5 scale-[1.44] origin-left">
             <img src={logo} alt="C12 Indianapolis" className="h-12" />
             <span className="font-heading font-bold text-foreground text-xl">| Indy</span>
           </Link>
