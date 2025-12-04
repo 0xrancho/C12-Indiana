@@ -32,5 +32,16 @@ document.head.appendChild(o)}initApollo();</script>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+
+    <!-- TriAD Pixel -->
+    <script type="text/javascript" src="https://js.triadctv.com/pixelv3.js"></script>
+    <script type="text/javascript">
+      triadDOMReady(function () {
+        if (typeof triadPixelApi === 'function') {
+          var pixelApi = new triadPixelApi();
+          pixelApi.init('mvhl7zi', ['5477bgk']);
+        }
+      });
+    </script>
   </body>
 </html>
