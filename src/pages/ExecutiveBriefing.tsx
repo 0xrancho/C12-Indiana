@@ -39,7 +39,7 @@ const ExecutiveBriefing = () => {
         email: formData.get('email'),
         phone: formData.get('phone'),
         organization: formData.get('organization'),
-        industry: formData.get('orgSize'), // Using orgSize field as industry placeholder
+        orgSize: formData.get('orgSize'),
         experience: formData.get('experience'),
         referralSource: formData.get('referralSource'),
         source: 'Executive Briefing',

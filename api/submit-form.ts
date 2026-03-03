@@ -29,7 +29,9 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       industry,
       experience,
       resourceDownloaded,
-      source
+      source,
+      orgSize,
+      referralSource
     } = body;
 
     // Initialize Notion client
@@ -38,9 +40,10 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     });
 
     // Add lead to Notion database
+    const databaseId = process.env.NOTION_LEADS_DATABASE_ID || process.env.NOTION_DATABASE_ID;
     await notion.pages.create({
       parent: {
-        database_id: process.env.NOTION_DATABASE_ID!,
+        database_id: databaseId!,
       },
       properties: {
         'Name': {
@@ -105,6 +108,21 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
             start: new Date().toISOString(),
           },
         },
+        // Store org size and referral source in Notes
+        ...(orgSize || referralSource ? {
+          'Notes': {
+            rich_text: [
+              {
+                text: {
+                  content: [
+                    orgSize ? `Org size: ${orgSize}` : '',
+                    referralSource ? `Referral: ${referralSource}` : '',
+                  ].filter(Boolean).join(' | '),
+                },
+              },
+            ],
+          },
+        } : {}),
       },
     });
 
@@ -132,7 +150,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
           console.log('Sending email via Resend...');
           const emailResult = await resend.emails.send({
-            from: process.env.EMAIL_FROM || 'onboarding@resend.dev',
+            from: process.env.RESEND_FROM_EMAIL || process.env.EMAIL_FROM || 'onboarding@resend.dev',
             to: email as string,
             subject: `Your C12 Resource: ${resourceDownloaded}`,
             html: `
@@ -175,7 +193,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
           const logoUrl = `${process.env.NEXT_PUBLIC_SITE_URL || 'https://c12-indiana.vercel.app'}/20230726-C12-TerritoryLogo-IndyandFortWaynePrimary-583X180.png`;
 
           const emailResult = await resend.emails.send({
-            from: process.env.EMAIL_FROM || 'onboarding@resend.dev',
+            from: process.env.RESEND_FROM_EMAIL || process.env.EMAIL_FROM || 'onboarding@resend.dev',
             to: email as string,
             subject: source === 'Executive Briefing'
               ? 'Thank You for Your Interest in C12 Executive Briefing'
@@ -236,6 +254,37 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
           console.error('Error sending confirmation email:', emailError);
           // Don't fail the entire request if email fails
         }
+      }
+    }
+
+    // Send admin notification email
+    if (process.env.NOTIFICATION_EMAIL) {
+      try {
+        const fromAddress = process.env.RESEND_FROM_EMAIL || process.env.EMAIL_FROM || 'onboarding@resend.dev';
+        await resend.emails.send({
+          from: fromAddress,
+          to: process.env.NOTIFICATION_EMAIL,
+          subject: `New C12 Indy Lead: ${firstName} ${lastName}`,
+          html: `
+            <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+              <h2 style="color: #003B4D;">New ${source || 'Website'} Submission</h2>
+              <p><strong>Name:</strong> ${firstName} ${lastName}</p>
+              <p><strong>Email:</strong> <a href="mailto:${email}">${email}</a></p>
+              <p><strong>Phone:</strong> ${phone || 'N/A'}</p>
+              <p><strong>Organization:</strong> ${organization || 'N/A'}</p>
+              <p><strong>Industry:</strong> ${industry || 'N/A'}</p>
+              <p><strong>Experience:</strong> ${experience || 'N/A'}</p>
+              ${body.referralSource ? `<p><strong>Referral Source:</strong> ${body.referralSource}</p>` : ''}
+              ${body.orgSize ? `<p><strong>Org Size:</strong> ${body.orgSize}</p>` : ''}
+              ${resourceDownloaded ? `<p><strong>Resource Downloaded:</strong> ${resourceDownloaded}</p>` : ''}
+              <hr style="border: none; border-top: 1px solid #E5E7EB; margin: 24px 0;" />
+              <p style="font-size: 12px; color: #6B7280;">This lead has been logged to the C12Indy.com Inbound database in Notion.</p>
+            </div>
+          `,
+        });
+        console.log('Admin notification sent to:', process.env.NOTIFICATION_EMAIL);
+      } catch (notifError) {
+        console.error('Error sending admin notification:', notifError);
       }
     }
 
