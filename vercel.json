@@ -1,5 +1,7 @@
 {
   "rewrites": [
+    { "source": "/assess", "destination": "https://c12-landing-assess.vercel.app/" },
+    { "source": "/assess/:path*", "destination": "https://c12-landing-assess.vercel.app/:path*" },
     {
       "source": "/(.*)",
       "destination": "/index.html"
